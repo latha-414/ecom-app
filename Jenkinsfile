@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+     tools {
+        jdk 'JDK21'
+    }
+    
     environment {
         JAVA_HOME = '/usr/lib/jvm/java-21-openjdk-amd64'
         PATH = "${env.JAVA_HOME}/bin:/usr/local/bin:${env.PATH}"
