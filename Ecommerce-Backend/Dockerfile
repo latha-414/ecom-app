@@ -1,11 +1,11 @@
 # Use OpenJDK 17 as base
 #FROM openjdk:17-jdk-slim
-#FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:17-jdk
 #FROM openjdk:21-jdk-slim
 #FROM eclipse-temurin:21-jdk-alpine
 
 # ---- Stage 1: Build JAR with Maven ----
-FROM maven:3.9-eclipse-temurin:17 AS builder
+#FROM maven:3.9-eclipse-temurin:17 AS builder
 WORKDIR /app
 
 # Copy pom.xml and download dependencies (cache layer)
