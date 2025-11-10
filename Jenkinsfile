@@ -10,7 +10,7 @@ pipeline {
         PATH = "${env.JAVA_HOME}/bin:/usr/local/bin:${env.PATH}"
         AWS_REGION = 'ap-south-1'
         IMAGE_TAG = "${env.BUILD_NUMBER}"
-        S3_BUCKET = 'ecommerce-project-artifacts-9fb890c7'  // ✅ Your real bucket name
+        S3_BUCKET = 'ecommerce-project-artifacts-48826da2'  // ✅ Your real bucket name
     }
 
     stages {
