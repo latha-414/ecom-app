@@ -1,25 +1,14 @@
-# -------------------------------------------------
-# Stage 1: Build JAR with Maven
-# -------------------------------------------------
-FROM maven:3.9-eclipse-temurin:17 AS builder
+this is backend dickerfile
+# Use OpenJDK 17 as base
+#FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jdk
+#FROM openjdk:21-jdk-slim
+#FROM eclipse-temurin:21-jdk-alpine
+# Set working directory
 WORKDIR /app
-
-# Cache dependencies
-COPY pom.xml .
-RUN mvn dependency:go-offline -B
-
-# Build app
-COPY src ./src
-RUN mvn clean package -DskipTests -B
-
-# -------------------------------------------------
-# Stage 2: Runtime (tiny JRE)
-# -------------------------------------------------
-FROM eclipse-temurin:17-jre-alpine
-WORKDIR /app
-
-# Copy JAR from builder
-COPY --from=builder /app/target/*.jar app.jar
-
+# Copy the built jar file
+COPY target/*.jar app.jar
+# Expose port 8080
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Run the Spring Boot app
+ENTRYPOINT ["java","-jar","app.jar"]
